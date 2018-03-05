@@ -238,16 +238,20 @@ public class UIUtility {
 	/*
 	 * Shows account balance, and gives option to withdraw or deposit
 	 */
-	public void accountMenu(Customer customer) {
-		if (customer.getAccountID() != null) {
+	public void accountMenu(Customer customer) {	
+
 		Scanner scan = new Scanner(System.in);
-		
 		if (customer.getAccountID() != null) {
 			Account account = CustomerUtility.getAccountFromCustomer(customer);
 			Logger log = Logger.getRootLogger();
 			log.debug("ui account : " + account);
 			if (account == null) {
-				log.debug("account is null");
+				log.error("account is null");
+				customerMenu(customer);
+			}
+			if (!account.isActive()) {
+				System.out.println("Your Account is Frozen");
+				log.debug(customer.getUsername() + " tried to access a frozen account");
 				customerMenu(customer);
 			}
 			double balance = account.getBalance();
@@ -270,9 +274,6 @@ public class UIUtility {
 			System.out.println("You don't have an account yet!");
 			System.out.print("Hit enter to go back ");
 			String back = scan.nextLine();
-			customerMenu(customer);
-		}
-		} else {
 			customerMenu(customer);
 		}
 		
@@ -369,7 +370,7 @@ public class UIUtility {
 	public void viewAccountsInfo(Employee employee) {
 		
 		System.out.println("******Account Info*******");
-		System.out.println("* Username \t Account ID \t Balance *");
+		System.out.println("* Username \t Account ID \t Balance \t Status*");
 		//get list of customers
 		List<Customer> customers = SerializeUtility.getCustomers();	
 
@@ -382,10 +383,11 @@ public class UIUtility {
 			Account account = CustomerUtility.getAccountFromCustomer(customer);
 			String accountID = account != null ? (account.getAccountID().toString()) : ("N/A");
 			double balance = account != null ? (account.getBalance()) : (0);
-			
-			System.out.println("* " + username + " \t " 
+			String status = account.isActive() ? ("Active") : ("Frozen");
+ 			System.out.println("* " + username + " \t " 
 					+ accountID + " \t "
-					+ balance);
+					+ balance + " \t "
+					+ status);
 		}
 		System.out.println("*******************************");
 
@@ -400,6 +402,7 @@ public class UIUtility {
 				employeeMenu(employee);
 			}
 		} else {
+			System.out.println("Could not find that username");
 			employeeMenu(employee);
 		}
 	}
@@ -408,8 +411,25 @@ public class UIUtility {
 		Account account = CustomerUtility.getAccountFromUsername(username);
 		if (account != null) {
 			Scanner scan = new Scanner(System.in);
-			System.out.print("Enter the new balance: ");
+			System.out.print("Enter the new balance (or type 'freeze' or 'activate'): ");
 			String line = scan.nextLine();
+			if (line.equals("freeze")) {
+				System.out.print("Are you sure you want to freeze this account y/n? ");
+				String yn = scan.nextLine();
+				if (yn.equals("y")) {
+					System.out.println(EmployeeUtility.freezeAccount(account));
+					LoggingUtil.logInfo(account + " has been frozen");
+					viewAccountsInfo(employee);
+				}
+			} else if (line.equals("activate")) {
+				System.out.print("Are you sure you want to activate this account y/n? ");
+				String yn = scan.nextLine();
+				if (yn.equals("y")) {
+					System.out.println(EmployeeUtility.unFreezeAccount(account));
+					LoggingUtil.logInfo(account + " has been activated");
+					viewAccountsInfo(employee);
+				}
+			}
 			double amount = Double.parseDouble(line);
 			
 			// ask are you sure?
@@ -419,7 +439,7 @@ public class UIUtility {
 				account.setBalance(amount);
 				SerializeUtility.updateAccount(account);
 				// log new balance
-				LoggingUtil.logDebug(username + " Account balance is now: " + account.getBalance());
+				LoggingUtil.logInfo(username + " Account balance is now: " + account.getBalance());
 				viewAccountsInfo(employee);
 			} else {
 				viewAccountsInfo(employee);

@@ -25,6 +25,7 @@ public class CustomerUtility {
 		while (i.hasNext()) {
 			Customer current = i.next();
 			if (current.getUsername().equals(username) && current.getPassword().equals(password)) {
+				LoggingUtil.logInfo(username + " has just logged in");
 				return current;
 			}
 		}
@@ -48,6 +49,7 @@ public class CustomerUtility {
 		Customer newCustomer = new Customer(username, password);
 		
 		if (SerializeUtility.addCustomer(newCustomer).equals("success")) {
+			LoggingUtil.logInfo(newCustomer.getUsername() + " has created an account");
 			return true;
 		} else {
 			return false;
@@ -67,6 +69,7 @@ public class CustomerUtility {
 		// add application to file
 		if (SerializeUtility.addApplication(application).equals("success") 
 				&& SerializeUtility.updateCustomer(customer).equals("success")) {
+			LoggingUtil.logInfo(customer.getUsername() + " has applied for an account");
 			return true;
 		} else {
 			return false;
@@ -75,20 +78,19 @@ public class CustomerUtility {
 	
 	
 	public static boolean createAccount(Customer customer) {	
-		Logger log = Logger.getRootLogger();
 		if (customer.getAccountID() != null) {
 			return false;
 		}
 		
 		Account account = new Account();
 
-		log.debug("account id = " + account.getAccountID().toString());
+		LoggingUtil.logInfo("account id = " + account.getAccountID().toString());
 		customer.setAccountID(account.getAccountID());
 
-		log.debug("customer account id = " + customer.getAccountID().toString());
+		LoggingUtil.logInfo("customer account id = " + customer.getAccountID().toString());
 		if (SerializeUtility.addAccount(account).equals("success") 
 				&& SerializeUtility.updateCustomer(customer).equals("success")) {
-			log.debug("account created");
+			LoggingUtil.logInfo("account created");
 			return true;
 		} else {
 			return false;
@@ -104,10 +106,10 @@ public class CustomerUtility {
 		}
 		Account account = getAccountFromCustomer(customer);
 		Logger log = Logger.getRootLogger();
-		log.debug("balance = " + account.getBalance());
-		log.debug("deposit amount = " + amount);
+		LoggingUtil.logInfo("balance = " + account.getBalance());
+		LoggingUtil.logInfo("deposit amount = " + amount);
 		account.deposit(amount);	
-		log.debug("new balance = " + account.getBalance());
+		LoggingUtil.logInfo("new balance = " + account.getBalance());
 	
 		if (SerializeUtility.updateAccount(account).equals("success")) {
 			return ("Your new balance is: "+account.getBalance());
@@ -121,15 +123,20 @@ public class CustomerUtility {
 			return "You don't have an account";
 		}
 		Account account = getAccountFromCustomer(customer);
+
+		LoggingUtil.logInfo("balance = " + account.getBalance());
+		LoggingUtil.logInfo("Withdraw amount = " + amount);
 		
 		if (amount >= account.getBalance()) {
 			return "You don't have that much money in the account";
 		}
 		account.withdraw(amount);	
 		if (SerializeUtility.updateAccount(account).equals("success")) {
+			LoggingUtil.logInfo("new balance = " + account.getBalance());
 			return ("Your new balance is: "+ account.getBalance());
 		} else {
-			return "Deposit Failed";
+			LoggingUtil.logError("Withdraw failed");
+			return "Withdraw Failed";
 		}
 		
 	}
@@ -187,8 +194,10 @@ public class CustomerUtility {
 		}
 		newUser.setAccountID(customer.getAccountID());
 		if (SerializeUtility.updateCustomer(newUser).equals("success")) {
+			LoggingUtil.logInfo(customer.getUsername() + " has added " + username + " to their account");
 			return username+" Added to Account";
 		} else {
+			LoggingUtil.logError("Could not add to account");
 			return "Could not add to Account";
 		}
 		

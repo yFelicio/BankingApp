@@ -41,5 +41,15 @@ public class EmployeeUtility {
 		}
 		return null;
 	}
+	public static String unFreezeAccount(Account account) {
+		if (account.isActive()) {
+			return "Account is already active!";
+		}
+		account.setActive(true);
+		if (SerializeUtility.updateAccount(account).equals("success")) {
+			return "Account is now Active";
+		}
+		return null;
+	}
 	
 }
