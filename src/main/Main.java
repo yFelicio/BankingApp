@@ -10,10 +10,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		/*
-		 * Project is already initiliazed with an admin and employee user
+		 * Project is already initiliazed with an admin and employee, and two customer users
 		 * Those are:
-		 * username: admin 			password: pass
-		 * username: employee1 		password: pass
+		 * username: admin 			password: pass	(admin)
+		 * username: employee1 		password: pass	(employee)
+		 * username: yuri 			password: pass	(customer)
+		 * username: customer1		password: pass	(customer)
 		 * 
 		 */
 		UIUtility ui = new UIUtility();

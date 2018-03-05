@@ -41,7 +41,6 @@ public class CustomerUtility {
 		Iterator<Customer> i = customers.iterator();
 		while (i.hasNext()) {
 			if (i.next().getUsername().equals(username)) {
-				//System.out.println("Sorry that username is already taken");
 				throw new UserAlreadyExistsException();
 			}
 		}
@@ -121,6 +120,9 @@ public class CustomerUtility {
 	public static String makeWithdrawal(Customer customer, double amount) {
 		if (customer.getAccountID() == null) {
 			return "You don't have an account";
+		}
+		if (amount < 0) {
+			return "You cannot withdraw a negative Amount";
 		}
 		Account account = getAccountFromCustomer(customer);
 

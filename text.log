@@ -12,3 +12,28 @@
 2018-03-05 09:58:27 DEBUG root:247 - ui account : com.revature.Bank.Account@5cb0d902
 2018-03-05 09:58:27 DEBUG root:258 - ui balance : 33.0
 2018-03-05 09:58:51 INFO  root:18 - yuri Account balance is now: 53.0
+2018-03-05 10:14:41 INFO  root:18 - balance = 53.0
+2018-03-05 10:14:41 INFO  root:18 - deposit amount = 50.0
+2018-03-05 10:14:41 INFO  root:18 - new balance = 103.0
+2018-03-05 10:15:10 INFO  root:18 - balance = 103.0
+2018-03-05 10:15:10 INFO  root:18 - deposit amount = 50.0
+2018-03-05 10:15:10 INFO  root:18 - new balance = 153.0
+2018-03-05 10:17:25 INFO  root:18 - balance = 153.0
+2018-03-05 10:17:25 INFO  root:18 - deposit amount = 50.0
+2018-03-05 10:17:25 INFO  root:18 - new balance = 203.0
+2018-03-05 10:17:25 INFO  root:18 - balance = 203.0
+2018-03-05 10:17:25 INFO  root:18 - Withdraw amount = 50.0
+2018-03-05 10:17:25 INFO  root:18 - new balance = 153.0
+2018-03-05 10:24:03 INFO  root:18 - customer1 has created an account
+2018-03-05 10:24:03 INFO  root:18 - balance = 153.0
+2018-03-05 10:24:03 INFO  root:18 - deposit amount = 50.0
+2018-03-05 10:24:03 INFO  root:18 - new balance = 203.0
+2018-03-05 10:24:03 INFO  root:18 - balance = 203.0
+2018-03-05 10:24:03 INFO  root:18 - Withdraw amount = 50.0
+2018-03-05 10:24:03 INFO  root:18 - new balance = 153.0
+2018-03-05 10:24:23 INFO  root:18 - balance = 153.0
+2018-03-05 10:24:23 INFO  root:18 - deposit amount = 50.0
+2018-03-05 10:24:23 INFO  root:18 - new balance = 203.0
+2018-03-05 10:24:23 INFO  root:18 - balance = 203.0
+2018-03-05 10:24:23 INFO  root:18 - Withdraw amount = 50.0
+2018-03-05 10:24:23 INFO  root:18 - new balance = 153.0
