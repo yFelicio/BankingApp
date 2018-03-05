@@ -37,3 +37,75 @@
 2018-03-05 10:24:23 INFO  root:18 - balance = 203.0
 2018-03-05 10:24:23 INFO  root:18 - Withdraw amount = 50.0
 2018-03-05 10:24:23 INFO  root:18 - new balance = 153.0
+2018-03-05 11:35:00 INFO  root:18 - balance = 200.0
+2018-03-05 11:35:00 INFO  root:18 - deposit amount = 50.0
+2018-03-05 11:35:00 INFO  root:18 - new balance = 250.0
+2018-03-05 11:35:00 INFO  root:18 - balance = 250.0
+2018-03-05 11:35:00 INFO  root:18 - Withdraw amount = 5.0
+2018-03-05 11:35:00 INFO  root:18 - new balance = 245.0
+2018-03-05 11:35:19 INFO  root:18 - balance = 200.0
+2018-03-05 11:35:19 INFO  root:18 - deposit amount = 50.0
+2018-03-05 11:35:19 INFO  root:18 - new balance = 250.0
+2018-03-05 11:35:19 INFO  root:18 - balance = 250.0
+2018-03-05 11:35:19 INFO  root:18 - Withdraw amount = 5.0
+2018-03-05 11:35:19 INFO  root:18 - new balance = 245.0
+2018-03-05 11:36:24 INFO  root:18 - balance = 200.0
+2018-03-05 11:36:24 INFO  root:18 - deposit amount = 50.0
+2018-03-05 11:36:24 INFO  root:18 - new balance = 250.0
+2018-03-05 11:36:24 INFO  root:18 - balance = 250.0
+2018-03-05 11:36:24 INFO  root:18 - Withdraw amount = 5.0
+2018-03-05 11:36:24 INFO  root:18 - new balance = 245.0
+2018-03-05 13:35:37 INFO  root:18 - yuri has just logged in
+2018-03-05 13:35:37 INFO  root:18 - balance = 200.0
+2018-03-05 13:35:37 INFO  root:18 - deposit amount = 50.0
+2018-03-05 13:35:37 INFO  root:18 - new balance = 250.0
+2018-03-05 13:35:37 INFO  root:18 - balance = 250.0
+2018-03-05 13:35:37 INFO  root:18 - Withdraw amount = 5.0
+2018-03-05 13:35:37 INFO  root:18 - new balance = 245.0
+2018-03-05 13:35:47 INFO  root:18 - yuri has just logged in
+2018-03-05 13:35:47 INFO  root:18 - balance = 200.0
+2018-03-05 13:35:47 INFO  root:18 - deposit amount = 50.0
+2018-03-05 13:35:47 INFO  root:18 - new balance = 250.0
+2018-03-05 13:35:47 INFO  root:18 - balance = 250.0
+2018-03-05 13:35:47 INFO  root:18 - Withdraw amount = 5.0
+2018-03-05 13:35:47 INFO  root:18 - new balance = 245.0
+2018-03-05 14:22:55 INFO  root:18 - yuri has just logged in
+2018-03-05 14:22:55 INFO  root:18 - d9ff0f4a-0 has created an account
+2018-03-05 14:22:55 INFO  root:18 - balance = 200.0
+2018-03-05 14:22:55 INFO  root:18 - deposit amount = 50.0
+2018-03-05 14:22:55 INFO  root:18 - new balance = 250.0
+2018-03-05 14:22:55 INFO  root:18 - balance = 250.0
+2018-03-05 14:22:55 INFO  root:18 - Withdraw amount = 5.0
+2018-03-05 14:22:55 INFO  root:18 - new balance = 245.0
+2018-03-05 14:29:27 INFO  root:18 - yuri has just logged in
+2018-03-05 14:29:27 INFO  root:18 - 6b333b9a-4 has created an account
+2018-03-05 14:29:27 INFO  root:18 - balance = 200.0
+2018-03-05 14:29:27 INFO  root:18 - deposit amount = 50.0
+2018-03-05 14:29:27 INFO  root:18 - new balance = 250.0
+2018-03-05 14:29:27 INFO  root:18 - balance = 250.0
+2018-03-05 14:29:27 INFO  root:18 - Withdraw amount = 5.0
+2018-03-05 14:29:27 INFO  root:18 - new balance = 245.0
+2018-03-05 14:30:56 INFO  root:18 - yuri has just logged in
+2018-03-05 14:30:56 INFO  root:18 - 0f0c76f8-4 has created an account
+2018-03-05 14:30:56 INFO  root:18 - balance = 200.0
+2018-03-05 14:30:56 INFO  root:18 - deposit amount = 50.0
+2018-03-05 14:30:56 INFO  root:18 - new balance = 250.0
+2018-03-05 14:30:56 INFO  root:18 - balance = 250.0
+2018-03-05 14:30:56 INFO  root:18 - Withdraw amount = 5.0
+2018-03-05 14:30:56 INFO  root:18 - new balance = 245.0
+2018-03-05 14:35:52 INFO  root:18 - yuri has just logged in
+2018-03-05 14:35:52 INFO  root:18 - d074c01e-d has created an account
+2018-03-05 14:35:52 INFO  root:18 - balance = 200.0
+2018-03-05 14:35:52 INFO  root:18 - deposit amount = 50.0
+2018-03-05 14:35:52 INFO  root:18 - new balance = 250.0
+2018-03-05 14:35:52 INFO  root:18 - balance = 250.0
+2018-03-05 14:35:52 INFO  root:18 - Withdraw amount = 5.0
+2018-03-05 14:35:52 INFO  root:18 - new balance = 245.0
+2018-03-05 14:42:35 INFO  root:18 - yuri has just logged in
+2018-03-05 14:42:35 INFO  root:18 - 6e8cb978-3 has created an account
+2018-03-05 14:42:35 INFO  root:18 - balance = 200.0
+2018-03-05 14:42:35 INFO  root:18 - deposit amount = 50.0
+2018-03-05 14:42:35 INFO  root:18 - new balance = 250.0
+2018-03-05 14:42:35 INFO  root:18 - balance = 250.0
+2018-03-05 14:42:35 INFO  root:18 - Withdraw amount = 5.0
+2018-03-05 14:42:35 INFO  root:18 - new balance = 245.0
