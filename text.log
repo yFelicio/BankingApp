@@ -1,0 +1,16 @@
+2018-03-04 15:22:40 DEBUG root:26 - yuri2 Account balance is now: 65.0
+2018-03-04 15:22:49 DEBUG root:26 - yuri Account balance is now: 12.0
+2018-03-04 15:26:53 DEBUG root:26 - yuri Account balance is now: 10.0
+2018-03-04 20:42:55 DEBUG root:248 - ui account : com.revature.Bank.Account@4629104a
+2018-03-04 20:42:55 DEBUG root:254 - ui balance : 10.0
+2018-03-04 20:42:58 DEBUG root:107 - balance = 10.0
+2018-03-04 20:42:58 DEBUG root:108 - deposit amount = 20.0
+2018-03-04 20:42:58 DEBUG root:110 - new balance = 30.0
+2018-03-04 20:42:58 DEBUG root:248 - ui account : com.revature.Bank.Account@497470ed
+2018-03-04 20:42:58 DEBUG root:254 - ui balance : 30.0
+2018-03-04 20:43:58 DEBUG root:248 - ui account : com.revature.Bank.Account@277050dc
+2018-03-04 20:43:58 DEBUG root:254 - ui balance : 30.0
+2018-03-04 20:44:01 DEBUG root:248 - ui account : com.revature.Bank.Account@6e5e91e4
+2018-03-04 20:44:01 DEBUG root:254 - ui balance : 10.0
+2018-03-04 20:44:08 DEBUG root:248 - ui account : com.revature.Bank.Account@30946e09
+2018-03-04 20:44:08 DEBUG root:254 - ui balance : 10.0
