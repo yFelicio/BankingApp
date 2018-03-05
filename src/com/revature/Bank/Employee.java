@@ -1,11 +1,14 @@
 package com.revature.Bank;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Employee implements Serializable {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7455281182516419931L;
 	private String username;
 	private String password;
 	
@@ -27,20 +30,5 @@ public class Employee implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public List<Application> viewApplications() {
-		
-		return null;
-	}
-	public void approveApplication(Application application) {
-		application.setStatus("approved");
-		application.createAccount();
-	}
-	public List<Application> viewCustomers() {
-		return null;
-		
-	}
-	
-	
-	
 	
 }

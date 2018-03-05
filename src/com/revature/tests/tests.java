@@ -12,6 +12,8 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import com.revature.Bank.Account;
+import com.revature.Bank.Admin;
+import com.revature.Bank.Application;
 import com.revature.Bank.Customer;
 import com.revature.Bank.Employee;
 import com.revature.Exceptions.UserAlreadyExistsException;
@@ -92,6 +94,22 @@ public class tests {
 		assertEquals("You don't have that much money in the account", result);
 	}
 	
+	/*
+	 * Test adding another customer to an account 
+	 */
+	public void testAddUserToAccount() {
+		Customer newCust = new Customer("Customer","pass");
+		assertEquals("Customer Added to Account",CustomerUtility.addUserToAccount(customer, "Customer"));
+		assertEquals("User not Found", CustomerUtility.addUserToAccount(customer, "not a user"));
+	}
+	
+
+	/*
+	 * test getting the right account from a username
+	 */
+	public void testgetAccountFromUsername() {
+		assertEquals(account, CustomerUtility.getAccountFromUsername("yuri"));
+	}
 	/*
 	 * Test to sign up user
 	 * First parameter in method must be unique!
@@ -202,10 +220,57 @@ public class tests {
 	}
 	
 	/*
-	 * 
+	 * test customer application creation
 	 */
+	@Test
+	public void testApplyForAccount() {
+
+		// generate random user
+		String custName = UUID.randomUUID().toString();
+		custName = custName.substring(0, 10);
+		Customer cust = new Customer(custName,"pass");
+		SerializeUtility.addCustomer(cust);
+		assertTrue(CustomerUtility.applyForAccount(cust));
+	}
 	
+	/*
+	 * Test customer object
+	 */
+	@Test
+	public void testCustomerObject() {
+		Customer c = new Customer("customer", "password");
+		assertEquals("customer",c.getUsername());
+		assertEquals("password",c.getPassword());
+		Application app = new Application();
+		c.setApplication(app);
+		assertEquals(app, c.getApplication());
+	}
 	
+	/*
+	 * test account object
+	 */
+	@Test 
+	public void testAccountObject() {
+		Account acc = new Account();
+		assert(acc.isActive());
+		acc.deposit(500);
+		assertEquals("500.0",""+acc.getBalance());
+		acc.withdraw(50);
+		assertEquals("450.0",""+acc.getBalance());
+	}
+	
+	/*
+	 * test employee object
+	 */
+	@Test
+	public void testEmployeeObject() {
+		Employee emp = new Employee("employee", "password");
+		assertEquals("employee", emp.getUsername());
+		assertEquals("password", emp.getPassword());
+		Employee admin = new Admin("admin", "pass");
+		assertTrue(admin instanceof Admin);
+		assertFalse(emp instanceof Admin);
+	}
 	
 	/*
 	 * delete all files

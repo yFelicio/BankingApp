@@ -5,6 +5,10 @@ import java.util.UUID;
 
 public class Application implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 512463425426654637L;
 	private final UUID applicationID;
 	private String status;
 	

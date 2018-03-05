@@ -6,6 +6,10 @@ import java.util.UUID;
 public class Customer implements Serializable{
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5952132959408227289L;
 	private String username;
 	private String password;
 	private UUID accountID;

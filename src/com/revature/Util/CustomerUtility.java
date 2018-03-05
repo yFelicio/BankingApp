@@ -12,9 +12,7 @@ import com.revature.Exceptions.UserAlreadyExistsException;
 
 public class CustomerUtility {
 
-	public CustomerUtility() {
-		super();
-	}
+	
 	
 	public static Customer attemptLogIn(String username, String password) {
 		// must search customer and Admin Lists
@@ -104,7 +102,6 @@ public class CustomerUtility {
 			return "Deposit must be greater than 0";
 		}
 		Account account = getAccountFromCustomer(customer);
-		Logger log = Logger.getRootLogger();
 		LoggingUtil.logInfo("balance = " + account.getBalance());
 		LoggingUtil.logInfo("deposit amount = " + amount);
 		account.deposit(amount);	
@@ -183,8 +180,6 @@ public class CustomerUtility {
 	}
 
 	public static String addUserToAccount(Customer customer, String username) {
-		// get account from current customer
-		Account account = getAccountFromCustomer(customer);
 		
 		// get new customer to be added from username
 		Customer newUser = getCustomerFromUsername(username);

@@ -3,12 +3,14 @@ package com.revature.Bank;
 import java.io.Serializable;
 import java.util.UUID;
 
-import com.revature.Exceptions.NegativeBalanceException;
-import com.revature.Exceptions.NotEnoughFundsException;
 
 public class Account implements Serializable {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1527367150779674053L;
 	private final UUID accountID;
 	private double balance;
 	private boolean active;
