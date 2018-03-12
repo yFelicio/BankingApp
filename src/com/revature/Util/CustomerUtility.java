@@ -5,198 +5,124 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.revature.Bank.Account;
-import com.revature.Bank.Application;
-import com.revature.Bank.Customer;
-import com.revature.Exceptions.UserAlreadyExistsException;
+import com.revature.dao.AccountDAO;
+import com.revature.dao.AccountDAOImpl;
+import com.revature.dao.ApplicationDAO;
+import com.revature.dao.ApplicationDAOImpl;
+import com.revature.dao.CustomerDAO;
+import com.revature.dao.CustomerDAOImpl;
+import com.revature.pojo.Account;
+import com.revature.pojo.Application;
+import com.revature.pojo.Customer;
 
 public class CustomerUtility {
 
 	
 	
 	public static Customer attemptLogIn(String username, String password) {
-		// must search customer and Admin Lists
-		List<Customer> customers = SerializeUtility.getCustomers();
+
+		CustomerDAO customerDAO = new CustomerDAOImpl();
 		
-		Iterator<Customer> i = customers.iterator();
-		
-		while (i.hasNext()) {
-			Customer current = i.next();
-			if (current.getUsername().equals(username) && current.getPassword().equals(password)) {
-				LoggingUtil.logInfo(username + " has just logged in");
-				return current;
-			}
-		}
-		
-		return null;
+		Customer customer = customerDAO.getCustomer(username, password);
+		return customer;
 		
 	}
 	
-	public static boolean attemptSignUp(String username, String password) throws UserAlreadyExistsException {
-		
-		//First check if username is already taken
-		List<Customer> customers = SerializeUtility.getCustomers();
-		Iterator<Customer> i = customers.iterator();
-		while (i.hasNext()) {
-			if (i.next().getUsername().equals(username)) {
-				throw new UserAlreadyExistsException();
+	public static String attemptSignUp(String username, String password) {
+		// First check if username is already taken
+		CustomerDAO customerDAO = new CustomerDAOImpl();
+		List<Customer> customers = customerDAO.getAllCustomers();
+		if (!(customers.isEmpty())) {
+			Iterator<Customer> i = customers.iterator();	
+			while (i.hasNext()) {
+				Customer customer = i.next();
+				if (customer.getUsername().equals(username)) {
+					LoggingUtil.logInfo(username + " was already taken");
+					return "Username already taken";
+				}
 			}
 		}
 		
 		Customer newCustomer = new Customer(username, password);
-		
-		if (SerializeUtility.addCustomer(newCustomer).equals("success")) {
-			LoggingUtil.logInfo(newCustomer.getUsername() + " has created an account");
-			return true;
-		} else {
-			return false;
-		}
+		customerDAO.signUp(username, password);
+		LoggingUtil.logInfo(newCustomer.getUsername() + " has created an account");
+		return "Sucessfully Signed Up!";
 	}
 	
 	
 	public static boolean applyForAccount(Customer customer) {
-		
-		if (customer.getApplication() != null) {
-			return false;
-		}
-		
-		Application application = new Application();
-		
-		customer.setApplication(application);
-		// add application to file
-		if (SerializeUtility.addApplication(application).equals("success") 
-				&& SerializeUtility.updateCustomer(customer).equals("success")) {
-			LoggingUtil.logInfo(customer.getUsername() + " has applied for an account");
-			return true;
-		} else {
-			return false;
-		}
+		ApplicationDAO applicationDAO = new ApplicationDAOImpl();
+		applicationDAO.createApplication(customer.getCustomerID());
+		LoggingUtil.logInfo(customer.getUsername() + " has applied for an account");
+		return true;
+	}
+	
+	public static List<Application> getApplicationFromCustomer(Customer customer) {
+		ApplicationDAO applicationDAO = new ApplicationDAOImpl();
+		List<Application> applications = applicationDAO.getApplicationFromUser(customer.getCustomerID());
+		return applications;
 	}
 	
 	
 	public static boolean createAccount(Customer customer) {	
-		if (customer.getAccountID() != null) {
-			return false;
-		}
-		
-		Account account = new Account();
-
-		LoggingUtil.logInfo("account id = " + account.getAccountID().toString());
-		customer.setAccountID(account.getAccountID());
-
-		LoggingUtil.logInfo("customer account id = " + customer.getAccountID().toString());
-		if (SerializeUtility.addAccount(account).equals("success") 
-				&& SerializeUtility.updateCustomer(customer).equals("success")) {
-			LoggingUtil.logInfo("account created");
-			return true;
-		} else {
-			return false;
-		}	
+		AccountDAO accountDAO = new AccountDAOImpl();
+		accountDAO.createAccount(customer.getCustomerID());
+		LoggingUtil.logInfo(customer.getUsername() + " has just created an account");
+		return true;
 	}
 	
-	public static String makeDeposit(Customer customer, double amount) {
-		if (customer.getAccountID() == null) {
-			return "You don't have an account";
+	public static String makeDeposit(Account account, double amount) {
+		if (amount <= 0.0) {
+			return "Deposit must be greater than 0.0";
 		}
-		if (amount <= 0) {
-			return "Deposit must be greater than 0";
-		}
-		Account account = getAccountFromCustomer(customer);
+		AccountDAO accountDAO = new AccountDAOImpl();
+		
 		LoggingUtil.logInfo("balance = " + account.getBalance());
 		LoggingUtil.logInfo("deposit amount = " + amount);
-		account.deposit(amount);	
+		account.deposit(amount);
+		accountDAO.updateAccount(account);
 		LoggingUtil.logInfo("new balance = " + account.getBalance());
-	
-		if (SerializeUtility.updateAccount(account).equals("success")) {
-			return ("Your new balance is: "+account.getBalance());
-		} else {
-			return "Deposit Failed";
-		}
+		
+		accountDAO.updateAccount(account);
+		return ("Your new balance is: "+account.getBalance());
+		
 		
 	}
-	public static String makeWithdrawal(Customer customer, double amount) {
-		if (customer.getAccountID() == null) {
-			return "You don't have an account";
-		}
+	public static String makeWithdrawal(Account account, double amount) {
 		if (amount < 0) {
 			return "You cannot withdraw a negative Amount";
 		}
-		Account account = getAccountFromCustomer(customer);
-
-		LoggingUtil.logInfo("balance = " + account.getBalance());
-		LoggingUtil.logInfo("Withdraw amount = " + amount);
-		
 		if (amount >= account.getBalance()) {
 			return "You don't have that much money in the account";
 		}
+		AccountDAO accountDAO = new AccountDAOImpl();
+		
+		LoggingUtil.logInfo("balance = " + account.getBalance());
+		LoggingUtil.logInfo("Withdraw amount = " + amount);
+		
 		account.withdraw(amount);	
-		if (SerializeUtility.updateAccount(account).equals("success")) {
-			LoggingUtil.logInfo("new balance = " + account.getBalance());
-			return ("Your new balance is: "+ account.getBalance());
-		} else {
-			LoggingUtil.logError("Withdraw failed");
-			return "Withdraw Failed";
-		}
-		
+		accountDAO.updateAccount(account);
+		LoggingUtil.logInfo("new balance = " + account.getBalance());
+		return ("Your new balance is: "+ account.getBalance());
 	}
 	
-	public static Account getAccountFromCustomer(Customer customer) {
-		
-		List<Account> accounts = SerializeUtility.getAccounts();
-		Iterator<Account> i = accounts.iterator();
-		while(i.hasNext()) {
-			Account account = i.next();
-			if ((account.getAccountID()).equals((customer.getAccountID()))) {
-				return account;
-			}
-		}
-		return null;
-	}
 	
-	public static Account getAccountFromUsername(String username) {
-		List<Customer> customers = SerializeUtility.getCustomers();
-		Iterator<Customer> i = customers.iterator();
-		
-		while (i.hasNext()) {
-			Customer customer = i.next();
-			if (customer.getUsername().equals(username)) {
-				return getAccountFromCustomer(customer);
-			}
-		}
-		return null;
-	}
-	
-	public static Customer getCustomerFromUsername(String username) {
-		List<Customer> customers = SerializeUtility.getCustomers();
-		Iterator<Customer> i = customers.iterator();
-		
-		while (i.hasNext()) {
-			Customer customer = i.next();
-			if (customer.getUsername().equals(username)) {
-				return customer;
-			}
-		}
-		return null;
-	}
 
-	public static String addUserToAccount(Customer customer, String username) {
-		
+	public static String addUserToAccount(int account_id, String username) {
 		// get new customer to be added from username
-		Customer newUser = getCustomerFromUsername(username);
+		CustomerDAO customerDAO = new CustomerDAOImpl();
+		Customer newUser = customerDAO.getCustomerFromUsername(username);
 		if (newUser == null) {
 			return "User not Found";
 		}
-		if (newUser.getAccountID() != null) {
-			return "This user already has an Account!";
+		AccountDAO accountDAO = new AccountDAOImpl();
+		Account account = accountDAO.getAccount(account_id);
+		if (account == null) {
+			return "Account not Found";
 		}
-		newUser.setAccountID(customer.getAccountID());
-		if (SerializeUtility.updateCustomer(newUser).equals("success")) {
-			LoggingUtil.logInfo(customer.getUsername() + " has added " + username + " to their account");
-			return username+" Added to Account";
-		} else {
-			LoggingUtil.logError("Could not add to account");
-			return "Could not add to Account";
-		}
+		accountDAO.addUserToAccount(newUser.getCustomerID(), account_id);
+		LoggingUtil.logInfo(account_id + " has added " + newUser.getUsername() + " as an owner of the account");
+		return username+" has been added to the account";
 		
 	}
 	

@@ -6,12 +6,12 @@ import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
-import com.revature.Bank.Account;
-import com.revature.Bank.Admin;
-import com.revature.Bank.Application;
-import com.revature.Bank.Customer;
-import com.revature.Bank.Employee;
-import com.revature.Exceptions.UserAlreadyExistsException;
+import com.revature.dao.CustomerDAOImpl;
+import com.revature.pojo.Account;
+import com.revature.pojo.Admin;
+import com.revature.pojo.Application;
+import com.revature.pojo.Customer;
+import com.revature.pojo.Employee;
 
 public class UIUtility {
 
@@ -106,21 +106,7 @@ public class UIUtility {
 			System.out.println("passwords do not match! Enter again");
 			signUpMenu();
 		}
-		boolean success = false;
-		try {
-			success = CustomerUtility.attemptSignUp(username, password);
-		} catch (UserAlreadyExistsException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("Username already exists, pick another.");
-			signUpMenu();
-		} finally {
-			if (success) {
-				System.out.println("Signed Up Successful");
-			} else {
-				System.out.println("Sign Up Failed");
-			}
-		}
+		System.out.println(CustomerUtility.attemptSignUp(username, password));
 		viewMainMenu();	
 	}
 	
@@ -156,9 +142,9 @@ public class UIUtility {
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("******Customer Menu******");
-		System.out.println("1. View Account");
+		System.out.println("1. View Account(s)");
 		System.out.println("2. Create Account");
-		System.out.println("3. View Application");
+		System.out.println("3. View Application(s)");
 		System.out.println("4. Add another user to your Account");
 		System.out.println("5. Sign Out");
 		System.out.print("Select a menu item (enter number): ");
@@ -186,12 +172,8 @@ public class UIUtility {
 	 * It will also check if you already have an account, and return you to the customer menu.
 	 */
 	public void createAccount(Customer customer) {
-		if (customer.getApplication() != null) {
-			System.out.println("You have already applied for an account!");
-			customerMenu(customer);
-		}
 		Scanner scan = new Scanner(System.in);
-		System.out.println("*******Create Accunt******");
+		System.out.println("*******Create Account******");
 		System.out.println("Would you like to apply for an account y/n?");
 		String confirm = scan.nextLine();
 		if (confirm.equals("y")) {
@@ -210,12 +192,14 @@ public class UIUtility {
 	 */
 	public void viewApplication(Customer customer) {
 		Scanner scan = new Scanner(System.in);
-		Application application = customer.getApplication();
-		if (application != null) {
-			String status = application.getStatus();
-			System.out.println("\nApplication status: " + status);
+		List<Application> applications = CustomerUtility.getApplicationFromCustomer(customer);
+		if (applications.size() <  1) {
+			System.out.println("Application status: You have not tried to create an account");
 		} else {
-			System.out.println("\nApplication status: You have not tried to create an account");
+			for (Application app : applications) {
+				System.out.println("Application ID: "+app.getApplicationID()
+					+" \t Application status: " + app.getStatus());
+			}
 		}
 		System.out.print("Hit enter to go back ");
 		String back = scan.nextLine();
@@ -228,11 +212,19 @@ public class UIUtility {
 	 *  
 	 */
 	public void addUserToAccount(Customer customer) {
+
+		List<Account> accounts = customer.getAccounts();
+		for (Account acc : accounts) {
+			System.out.println("Account ID : " + acc.getAccountID());
+		}
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Enter a user to add to your account: ");
+		System.out.print("Enter the account Number to add a user to: ");
+		String line = scan.nextLine();
+		int account_id = Integer.parseInt(line);
+		System.out.print("Enter the username: ");
 		String username = scan.nextLine();
 		
-		System.out.println(CustomerUtility.addUserToAccount(customer, username));
+		System.out.println(CustomerUtility.addUserToAccount(account_id, username));
 		customerMenu(customer);
 	}
 	/*
@@ -241,23 +233,21 @@ public class UIUtility {
 	public void accountMenu(Customer customer) {	
 
 		Scanner scan = new Scanner(System.in);
-		if (customer.getAccountID() != null) {
-			Account account = CustomerUtility.getAccountFromCustomer(customer);
+		if (customer.getAccounts().size() != 0) {
+			
+			List<Account> accounts = customer.getAccounts();
 			Logger log = Logger.getRootLogger();
-			log.debug("ui account : " + account);
-			if (account == null) {
-				log.error("account is null");
-				customerMenu(customer);
-			}
-			if (!account.isActive()) {
-				System.out.println("Your Account is Frozen");
-				log.debug(customer.getUsername() + " tried to access a frozen account");
-				customerMenu(customer);
-			}
-			double balance = account.getBalance();
-			log.debug("ui balance : "+balance);
+
 			System.out.println("******Account Menu*******");
-			System.out.println("Balance: " + balance);
+			for (Account acc : accounts) {
+				if (!acc.isActive()) {
+				System.out.println("Account ID " + acc.getAccountID() 
+					+ " is Frozen");
+				} else {
+					System.out.println("Account ID " + acc.getAccountID() 
+						+ ": $"+acc.getBalance());
+				}
+			}
 			System.out.println("1. Make a Deposit");
 			System.out.println("2. Make a Withdraw");
 			System.out.println("3. Go Back");
@@ -281,21 +271,58 @@ public class UIUtility {
 	
 	public void makeDeposit(Customer customer) {
 		Scanner scan = new Scanner(System.in);
-		System.out.print("How much would you like to deposit? ");
+		System.out.print("Which account would you like to deposit into (enter the id)? ");
 		String line = scan.nextLine();
-		double amount = Double.parseDouble(line);
-		// make deposit and return new account balance
-		System.out.println(CustomerUtility.makeDeposit(customer, amount));
-		accountMenu(customer);
+		List<Account> accounts = customer.getAccounts(); 
+		Account account = null;
+		for (Account acc : accounts) {
+			if (acc.getAccountID() == Double.parseDouble(line)) {
+				account = acc;
+			}
+		}
+		if (!account.isActive()) {
+			System.out.println("This account is Frozen.");
+			accountMenu(customer);
+		}
+		if (account != null) {
+			System.out.print("How much would you like to deposit? ");
+			line = scan.nextLine();
+			double amount = Double.parseDouble(line);
+			// make deposit and return new account balance
+			System.out.println(CustomerUtility.makeDeposit(account, amount));
+			accountMenu(customer);	
+		} else {
+			System.out.println("You do not have an account that matches that ID");
+			accountMenu(customer);
+		}
 	}
-	
+
 	public void makeWithdrawal(Customer customer) {
 		Scanner scan = new Scanner(System.in);
-		System.out.print("How much would you like to withdraw? ");
+		System.out.print("Which account would you like to withdraw from (enter the id)? ");
 		String line = scan.nextLine();
-		double amount = Double.parseDouble(line);
-		System.out.println(CustomerUtility.makeWithdrawal(customer, amount));
-		accountMenu(customer);
+		List<Account> accounts = customer.getAccounts(); 
+		Account account = null;
+		for (Account acc : accounts) {
+			if (acc.getAccountID() == Double.parseDouble(line)) {
+				account = acc;
+			}
+		}
+		if (!account.isActive()) {
+			System.out.println("This account is Frozen.");
+			accountMenu(customer);
+		}
+		if (account != null) {
+			System.out.print("How much would you like to withdraw? ");
+			line = scan.nextLine();
+			double amount = Double.parseDouble(line);
+			// make deposit and return new account balance
+			System.out.println(CustomerUtility.makeWithdrawal(account, amount));
+			accountMenu(customer);	
+		} else {
+			System.out.println("You do not have an account that matches that ID");
+			accountMenu(customer);
+		}
 	}
 	
 	/*
@@ -334,30 +361,19 @@ public class UIUtility {
 	 * Display customer information and their account information
 	 */
 	public void viewCustomersInfo(Employee employee) {
-
 		//get list of customers
-		List<Customer> customers = SerializeUtility.getCustomers();
+		List<Customer> customers = EmployeeUtility.getAllCustomers();
 		
 		System.out.println("******Customers Info*******");
-		System.out.println("* Username \t Account ID \t Balance \t Application Status");
+		System.out.println("* User ID \t Username ");
 
 		// Iterate through customers list and display information
 		Iterator<Customer> i = customers.iterator();
 		while (i.hasNext()) {
 			Customer customer = i.next();
 			String username = customer.getUsername(); 
-			// account from current customer
-			Account account = CustomerUtility.getAccountFromCustomer(customer);
-			String accountID = account != null ? (account.getAccountID().toString()) : ("N/A");
-			double balance = account != null ? (account.getBalance()) : (0);
-			// application from current customer
-			Application application = customer.getApplication();
-			String status = application != null ? (application.getStatus()) : ("N/A");
 			
-			System.out.println("* " + username + " \t " 
-					+ accountID + " \t "
-					+ balance + " \t "
-					+ status);
+			System.out.println("* " + customer.getCustomerID() + " \t \t " + customer.getUsername());
 		}
 		System.out.println("*******************************");
 
@@ -372,43 +388,54 @@ public class UIUtility {
 		System.out.println("******Account Info*******");
 		System.out.println("* Username \t Account ID \t Balance \t Status*");
 		//get list of customers
-		List<Customer> customers = SerializeUtility.getCustomers();	
+		List<Customer> customers = EmployeeUtility.getAllCustomers();	
 
 		// Iterate through customers list and display information
 		Iterator<Customer> i = customers.iterator();
 		while (i.hasNext()) {
 			Customer customer = i.next();
+			List<Account> accounts = customer.getAccounts();
 			String username = customer.getUsername(); 
+			System.out.print("* " + username);
+			if (!accounts.isEmpty()) {
+				Iterator<Account> ai = accounts.iterator();
+				while (ai.hasNext()) {
+					Account account = ai.next();
+					String status = account.isActive() ? ("Active") : ("Frozen");
+					
+					System.out.println(" \t \t " + account.getAccountID() + " \t \t " 
+							+ account.getBalance() + " \t \t " + status);
+				}
+			} else {
+				System.out.println(" \t N/A \t N/A \t N/A ");
+			}
 			// account from current customer
-			Account account = CustomerUtility.getAccountFromCustomer(customer);
-			String accountID = account != null ? (account.getAccountID().toString()) : ("N/A");
-			double balance = account != null ? (account.getBalance()) : (0);
-			String status = account.isActive() ? ("Active") : ("Frozen");
- 			System.out.println("* " + username + " \t " 
-					+ accountID + " \t "
-					+ balance + " \t "
-					+ status);
 		}
 		System.out.println("*******************************");
 
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Enter a username to edit balance (or type exit to leave): ");
-		String username = scan.nextLine();
-		if (!(username.equals("exit"))) {
+		System.out.print("Enter an Account ID to edit balance (or type exit to leave): ");
+		String line = scan.nextLine();
+		if (!(line.equals("exit"))) {
 			if (employee instanceof Admin) {
-				editAccountsInfo(employee, username);
+				int id = Integer.parseInt(line);
+				// check if id entered is valid
+				
+				editAccountsInfo(employee, id);
 			} else {
 				System.out.println("You do not have admin privilages!");
 				employeeMenu(employee);
 			}
+		} else if (line.equals("exit")) {
+			employeeMenu(employee);
 		} else {
-			System.out.println("Could not find that username");
+			System.out.println("Could not find that ID");
 			employeeMenu(employee);
 		}
 	}
 	
-	public void editAccountsInfo(Employee employee, String username) {
-		Account account = CustomerUtility.getAccountFromUsername(username);
+	public void editAccountsInfo(Employee employee, int account_id) {
+		Account account = EmployeeUtility.getAccountFromID(account_id);
 		if (account != null) {
 			Scanner scan = new Scanner(System.in);
 			System.out.print("Enter the new balance (or type 'freeze' or 'activate'): ");
@@ -437,15 +464,18 @@ public class UIUtility {
 			String yn = scan.nextLine();
 			if (yn.equals("y")) {
 				account.setBalance(amount);
-				SerializeUtility.updateAccount(account);
-				// log new balance
-				LoggingUtil.logInfo(username + " Account balance is now: " + account.getBalance());
+				if (EmployeeUtility.setBalance(account, amount)) {
+					// log new balance
+					LoggingUtil.logInfo("Account " + account.getAccountID() + " balance is now: " + account.getBalance());
+				} else {
+					LoggingUtil.logDebug("Account not successfuly changed.");
+				}
 				viewAccountsInfo(employee);
 			} else {
 				viewAccountsInfo(employee);
 			}
 		} else {
-			System.out.println("Could not find an account for this user.");
+			System.out.println("Could not find an account with that id.");
 			viewAccountsInfo(employee);
 		}
 	}
@@ -457,43 +487,46 @@ public class UIUtility {
 	 */
 	public void viewApplications(Employee employee) {
 		// get list of Applications
-		List<Customer> customers = SerializeUtility.getCustomers();
+		List<Application> applications = EmployeeUtility.getAllApplications();
 		
 		System.out.println("******Application Info*******");
-		System.out.println("* Username \t Status *");
-		// Iterate through customers list and display information
-		Iterator<Customer> i = customers.iterator();
+		System.out.println("* ApplicationID \t Status *");
+		if (applications.isEmpty()) {
+			System.out.println("There are currently no applications!");
+			employeeMenu(employee);
+		}
+		// Iterate through Application list and display information
+		Iterator<Application> i = applications.iterator();
 		while (i.hasNext()) {
-			Customer customer = i.next();
-			Application application = customer.getApplication();
-			String username = customer.getUsername();
-			String status = application != null ? (application.getStatus()) : ("N/A");
-			System.out.println("* "+ username +" \t " + status);
+			Application application = i.next();
+			System.out.println("* "+ application.getApplicationID() +" \t \t " + application.getStatus());
 		}
 		System.out.println("*******************************");
 
 		Scanner scan = new Scanner(System.in);
 		System.out.print("Would you like to approve some applications y/n? ");
-		String enter = scan.nextLine();
-		if (enter.equals("y")) {
-			approveApplications(employee, customers);
+		String line = scan.nextLine();
+		if (line.equals("y")) {
+			approveApplications(employee, applications);
 		} else {
 			employeeMenu(employee);
 		}
 	}
 	
-	public void approveApplications(Employee employee, List<Customer> customers) {
+	public void approveApplications(Employee employee, List<Application> applications) {
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Enter a customers username to approve: ");
-		String username = scan.nextLine();
-		Iterator<Customer> i = customers.iterator();
+		System.out.print("Enter an Application ID to approve: ");
+		String line = scan.nextLine();
+		int id = Integer.parseInt(line);
+		Iterator<Application> i = applications.iterator();
 		while (i.hasNext()) {
-			Customer customer = i.next();
-			if (customer.getUsername().equals(username)) {
-				customer.getApplication().setStatus("approved");
-				CustomerUtility.createAccount(customer);
+			Application application = i.next();
+			if (application.getApplicationID() == id) {
+				EmployeeUtility.updateApplication(application);
+				viewApplications(employee);
 			}
 		}
+		System.out.println("There is no Application with that ID");
 		viewApplications(employee);
 	}
 	

@@ -11,15 +11,15 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.revature.Bank.Account;
-import com.revature.Bank.Admin;
-import com.revature.Bank.Application;
-import com.revature.Bank.Customer;
-import com.revature.Bank.Employee;
 import com.revature.Exceptions.UserAlreadyExistsException;
 import com.revature.Util.CustomerUtility;
 import com.revature.Util.EmployeeUtility;
 import com.revature.Util.SerializeUtility;
+import com.revature.pojo.Account;
+import com.revature.pojo.Admin;
+import com.revature.pojo.Application;
+import com.revature.pojo.Customer;
+import com.revature.pojo.Employee;
 
 public class tests {
 	static Customer customer = new Customer("yuri", "pass");

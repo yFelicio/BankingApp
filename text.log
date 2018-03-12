@@ -1,273 +1,65 @@
-2018-03-05 09:58:17 INFO  root:18 - yuri has just logged in
-2018-03-05 09:58:22 DEBUG root:247 - ui account : com.revature.Bank.Account@67424e82
-2018-03-05 09:58:22 DEBUG root:258 - ui balance : 3.0
-2018-03-05 09:58:25 INFO  root:18 - balance = 3.0
-2018-03-05 09:58:25 INFO  root:18 - deposit amount = 50.0
-2018-03-05 09:58:25 INFO  root:18 - new balance = 53.0
-2018-03-05 09:58:25 DEBUG root:247 - ui account : com.revature.Bank.Account@5387f9e0
-2018-03-05 09:58:25 DEBUG root:258 - ui balance : 53.0
-2018-03-05 09:58:27 INFO  root:18 - balance = 53.0
-2018-03-05 09:58:27 INFO  root:18 - Withdraw amount = 20.0
-2018-03-05 09:58:27 INFO  root:18 - new balance = 33.0
-2018-03-05 09:58:27 DEBUG root:247 - ui account : com.revature.Bank.Account@5cb0d902
-2018-03-05 09:58:27 DEBUG root:258 - ui balance : 33.0
-2018-03-05 09:58:51 INFO  root:18 - yuri Account balance is now: 53.0
-2018-03-05 10:14:41 INFO  root:18 - balance = 53.0
-2018-03-05 10:14:41 INFO  root:18 - deposit amount = 50.0
-2018-03-05 10:14:41 INFO  root:18 - new balance = 103.0
-2018-03-05 10:15:10 INFO  root:18 - balance = 103.0
-2018-03-05 10:15:10 INFO  root:18 - deposit amount = 50.0
-2018-03-05 10:15:10 INFO  root:18 - new balance = 153.0
-2018-03-05 10:17:25 INFO  root:18 - balance = 153.0
-2018-03-05 10:17:25 INFO  root:18 - deposit amount = 50.0
-2018-03-05 10:17:25 INFO  root:18 - new balance = 203.0
-2018-03-05 10:17:25 INFO  root:18 - balance = 203.0
-2018-03-05 10:17:25 INFO  root:18 - Withdraw amount = 50.0
-2018-03-05 10:17:25 INFO  root:18 - new balance = 153.0
-2018-03-05 10:24:03 INFO  root:18 - customer1 has created an account
-2018-03-05 10:24:03 INFO  root:18 - balance = 153.0
-2018-03-05 10:24:03 INFO  root:18 - deposit amount = 50.0
-2018-03-05 10:24:03 INFO  root:18 - new balance = 203.0
-2018-03-05 10:24:03 INFO  root:18 - balance = 203.0
-2018-03-05 10:24:03 INFO  root:18 - Withdraw amount = 50.0
-2018-03-05 10:24:03 INFO  root:18 - new balance = 153.0
-2018-03-05 10:24:23 INFO  root:18 - balance = 153.0
-2018-03-05 10:24:23 INFO  root:18 - deposit amount = 50.0
-2018-03-05 10:24:23 INFO  root:18 - new balance = 203.0
-2018-03-05 10:24:23 INFO  root:18 - balance = 203.0
-2018-03-05 10:24:23 INFO  root:18 - Withdraw amount = 50.0
-2018-03-05 10:24:23 INFO  root:18 - new balance = 153.0
-2018-03-05 11:35:00 INFO  root:18 - balance = 200.0
-2018-03-05 11:35:00 INFO  root:18 - deposit amount = 50.0
-2018-03-05 11:35:00 INFO  root:18 - new balance = 250.0
-2018-03-05 11:35:00 INFO  root:18 - balance = 250.0
-2018-03-05 11:35:00 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 11:35:00 INFO  root:18 - new balance = 245.0
-2018-03-05 11:35:19 INFO  root:18 - balance = 200.0
-2018-03-05 11:35:19 INFO  root:18 - deposit amount = 50.0
-2018-03-05 11:35:19 INFO  root:18 - new balance = 250.0
-2018-03-05 11:35:19 INFO  root:18 - balance = 250.0
-2018-03-05 11:35:19 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 11:35:19 INFO  root:18 - new balance = 245.0
-2018-03-05 11:36:24 INFO  root:18 - balance = 200.0
-2018-03-05 11:36:24 INFO  root:18 - deposit amount = 50.0
-2018-03-05 11:36:24 INFO  root:18 - new balance = 250.0
-2018-03-05 11:36:24 INFO  root:18 - balance = 250.0
-2018-03-05 11:36:24 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 11:36:24 INFO  root:18 - new balance = 245.0
-2018-03-05 13:35:37 INFO  root:18 - yuri has just logged in
-2018-03-05 13:35:37 INFO  root:18 - balance = 200.0
-2018-03-05 13:35:37 INFO  root:18 - deposit amount = 50.0
-2018-03-05 13:35:37 INFO  root:18 - new balance = 250.0
-2018-03-05 13:35:37 INFO  root:18 - balance = 250.0
-2018-03-05 13:35:37 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 13:35:37 INFO  root:18 - new balance = 245.0
-2018-03-05 13:35:47 INFO  root:18 - yuri has just logged in
-2018-03-05 13:35:47 INFO  root:18 - balance = 200.0
-2018-03-05 13:35:47 INFO  root:18 - deposit amount = 50.0
-2018-03-05 13:35:47 INFO  root:18 - new balance = 250.0
-2018-03-05 13:35:47 INFO  root:18 - balance = 250.0
-2018-03-05 13:35:47 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 13:35:47 INFO  root:18 - new balance = 245.0
-2018-03-05 14:22:55 INFO  root:18 - yuri has just logged in
-2018-03-05 14:22:55 INFO  root:18 - d9ff0f4a-0 has created an account
-2018-03-05 14:22:55 INFO  root:18 - balance = 200.0
-2018-03-05 14:22:55 INFO  root:18 - deposit amount = 50.0
-2018-03-05 14:22:55 INFO  root:18 - new balance = 250.0
-2018-03-05 14:22:55 INFO  root:18 - balance = 250.0
-2018-03-05 14:22:55 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 14:22:55 INFO  root:18 - new balance = 245.0
-2018-03-05 14:29:27 INFO  root:18 - yuri has just logged in
-2018-03-05 14:29:27 INFO  root:18 - 6b333b9a-4 has created an account
-2018-03-05 14:29:27 INFO  root:18 - balance = 200.0
-2018-03-05 14:29:27 INFO  root:18 - deposit amount = 50.0
-2018-03-05 14:29:27 INFO  root:18 - new balance = 250.0
-2018-03-05 14:29:27 INFO  root:18 - balance = 250.0
-2018-03-05 14:29:27 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 14:29:27 INFO  root:18 - new balance = 245.0
-2018-03-05 14:30:56 INFO  root:18 - yuri has just logged in
-2018-03-05 14:30:56 INFO  root:18 - 0f0c76f8-4 has created an account
-2018-03-05 14:30:56 INFO  root:18 - balance = 200.0
-2018-03-05 14:30:56 INFO  root:18 - deposit amount = 50.0
-2018-03-05 14:30:56 INFO  root:18 - new balance = 250.0
-2018-03-05 14:30:56 INFO  root:18 - balance = 250.0
-2018-03-05 14:30:56 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 14:30:56 INFO  root:18 - new balance = 245.0
-2018-03-05 14:35:52 INFO  root:18 - yuri has just logged in
-2018-03-05 14:35:52 INFO  root:18 - d074c01e-d has created an account
-2018-03-05 14:35:52 INFO  root:18 - balance = 200.0
-2018-03-05 14:35:52 INFO  root:18 - deposit amount = 50.0
-2018-03-05 14:35:52 INFO  root:18 - new balance = 250.0
-2018-03-05 14:35:52 INFO  root:18 - balance = 250.0
-2018-03-05 14:35:52 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 14:35:52 INFO  root:18 - new balance = 245.0
-2018-03-05 14:42:35 INFO  root:18 - yuri has just logged in
-2018-03-05 14:42:35 INFO  root:18 - 6e8cb978-3 has created an account
-2018-03-05 14:42:35 INFO  root:18 - balance = 200.0
-2018-03-05 14:42:35 INFO  root:18 - deposit amount = 50.0
-2018-03-05 14:42:35 INFO  root:18 - new balance = 250.0
-2018-03-05 14:42:35 INFO  root:18 - balance = 250.0
-2018-03-05 14:42:35 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 14:42:35 INFO  root:18 - new balance = 245.0
-2018-03-05 15:07:41 INFO  root:18 - yuri has just logged in
-2018-03-05 15:07:41 INFO  root:18 - 7a8a13ec-2 has created an account
-2018-03-05 15:07:41 INFO  root:18 - balance = 200.0
-2018-03-05 15:07:41 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:07:41 INFO  root:18 - new balance = 250.0
-2018-03-05 15:07:41 INFO  root:18 - balance = 250.0
-2018-03-05 15:07:41 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:07:41 INFO  root:18 - new balance = 245.0
-2018-03-05 15:08:36 INFO  root:18 - yuri has just logged in
-2018-03-05 15:08:36 INFO  root:18 - a5570d78-7 has created an account
-2018-03-05 15:08:36 INFO  root:18 - f6902c5b-3 has applied for an account
-2018-03-05 15:08:36 INFO  root:18 - balance = 200.0
-2018-03-05 15:08:36 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:08:36 INFO  root:18 - new balance = 250.0
-2018-03-05 15:08:36 INFO  root:18 - balance = 250.0
-2018-03-05 15:08:36 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:08:36 INFO  root:18 - new balance = 245.0
-2018-03-05 15:10:55 INFO  root:18 - yuri has just logged in
-2018-03-05 15:10:55 INFO  root:18 - 79215d59-4 has created an account
-2018-03-05 15:10:55 INFO  root:18 - 2ad5d23c-2 has applied for an account
-2018-03-05 15:10:55 INFO  root:18 - balance = 200.0
-2018-03-05 15:10:55 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:10:55 INFO  root:18 - new balance = 250.0
-2018-03-05 15:10:55 INFO  root:18 - balance = 250.0
-2018-03-05 15:10:55 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:10:55 INFO  root:18 - new balance = 245.0
-2018-03-05 15:18:35 INFO  root:18 - yuri has just logged in
-2018-03-05 15:18:35 INFO  root:18 - 605319b7-0 has created an account
-2018-03-05 15:18:35 INFO  root:18 - f8ebc6aa-f has applied for an account
-2018-03-05 15:18:35 INFO  root:18 - balance = 200.0
-2018-03-05 15:18:35 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:18:35 INFO  root:18 - new balance = 250.0
-2018-03-05 15:18:35 INFO  root:18 - balance = 250.0
-2018-03-05 15:18:35 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:18:35 INFO  root:18 - new balance = 245.0
-2018-03-05 15:22:15 INFO  root:18 - yuri has just logged in
-2018-03-05 15:22:15 INFO  root:18 - 25fb2e88-0 has created an account
-2018-03-05 15:22:15 INFO  root:18 - 37c7607d-8 has applied for an account
-2018-03-05 15:22:15 INFO  root:18 - balance = 200.0
-2018-03-05 15:22:15 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:22:15 INFO  root:18 - new balance = 250.0
-2018-03-05 15:22:15 INFO  root:18 - balance = 250.0
-2018-03-05 15:22:15 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:22:15 INFO  root:18 - new balance = 245.0
-2018-03-05 15:35:02 INFO  root:18 - yuri has just logged in
-2018-03-05 15:35:02 INFO  root:18 - 424fad5f-4 has created an account
-2018-03-05 15:35:02 INFO  root:18 - 60e9a5b7-2 has applied for an account
-2018-03-05 15:35:02 INFO  root:18 - balance = 200.0
-2018-03-05 15:35:02 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:35:02 INFO  root:18 - new balance = 250.0
-2018-03-05 15:35:02 INFO  root:18 - balance = 250.0
-2018-03-05 15:35:02 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:35:02 INFO  root:18 - new balance = 245.0
-2018-03-05 15:38:45 INFO  root:18 - yuri has just logged in
-2018-03-05 15:38:45 INFO  root:18 - c98e7998-2 has created an account
-2018-03-05 15:38:45 INFO  root:18 - 1893be39-2 has applied for an account
-2018-03-05 15:38:45 INFO  root:18 - balance = 200.0
-2018-03-05 15:38:45 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:38:45 INFO  root:18 - new balance = 250.0
-2018-03-05 15:38:45 INFO  root:18 - balance = 250.0
-2018-03-05 15:38:45 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:38:45 INFO  root:18 - new balance = 245.0
-2018-03-05 15:39:00 INFO  root:18 - yuri has just logged in
-2018-03-05 15:39:00 INFO  root:18 - d98315c0-f has created an account
-2018-03-05 15:39:00 INFO  root:18 - bc1dc29f-7 has applied for an account
-2018-03-05 15:39:00 INFO  root:18 - balance = 200.0
-2018-03-05 15:39:00 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:39:00 INFO  root:18 - new balance = 250.0
-2018-03-05 15:39:00 INFO  root:18 - balance = 250.0
-2018-03-05 15:39:00 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:39:00 INFO  root:18 - new balance = 245.0
-2018-03-05 15:39:20 INFO  root:18 - yuri has created an account
-2018-03-05 15:39:22 INFO  root:18 - yuri has just logged in
-2018-03-05 15:39:25 INFO  root:18 - yuri has applied for an account
-2018-03-05 15:39:42 INFO  root:18 - account id = e6219d18-f5a7-497d-a1c8-0e7f7827821b
-2018-03-05 15:39:42 INFO  root:18 - customer account id = e6219d18-f5a7-497d-a1c8-0e7f7827821b
-2018-03-05 15:39:42 INFO  root:18 - account created
-2018-03-05 15:39:48 INFO  root:18 - yuri has just logged in
-2018-03-05 15:39:49 DEBUG root:247 - ui account : com.revature.Bank.Account@2957fcb0
-2018-03-05 15:39:49 DEBUG root:258 - ui balance : 0.0
-2018-03-05 15:39:52 INFO  root:18 - balance = 0.0
-2018-03-05 15:39:52 INFO  root:18 - deposit amount = 5000.0
-2018-03-05 15:39:52 INFO  root:18 - new balance = 5000.0
-2018-03-05 15:39:52 DEBUG root:247 - ui account : com.revature.Bank.Account@deb6432
-2018-03-05 15:39:52 DEBUG root:258 - ui balance : 5000.0
-2018-03-05 15:39:55 INFO  root:18 - balance = 5000.0
-2018-03-05 15:39:55 INFO  root:18 - Withdraw amount = 400.0
-2018-03-05 15:39:55 INFO  root:18 - new balance = 4600.0
-2018-03-05 15:39:55 DEBUG root:247 - ui account : com.revature.Bank.Account@20fa23c1
-2018-03-05 15:39:55 DEBUG root:258 - ui balance : 4600.0
-2018-03-05 15:42:13 INFO  root:18 - yuri has just logged in
-2018-03-05 15:42:13 INFO  root:18 - 4f5a9d5a-3 has created an account
-2018-03-05 15:42:13 INFO  root:18 - 61529f84-f has applied for an account
-2018-03-05 15:42:13 INFO  root:18 - balance = 200.0
-2018-03-05 15:42:13 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:42:13 INFO  root:18 - new balance = 250.0
-2018-03-05 15:42:13 INFO  root:18 - balance = 250.0
-2018-03-05 15:42:13 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:42:13 INFO  root:18 - new balance = 245.0
-2018-03-05 15:42:35 INFO  root:18 - yuri has just logged in
-2018-03-05 15:42:35 INFO  root:18 - f521cbff-6 has created an account
-2018-03-05 15:42:35 INFO  root:18 - f16f9c73-2 has applied for an account
-2018-03-05 15:42:35 INFO  root:18 - balance = 200.0
-2018-03-05 15:42:35 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:42:35 INFO  root:18 - new balance = 250.0
-2018-03-05 15:42:35 INFO  root:18 - balance = 250.0
-2018-03-05 15:42:35 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:42:35 INFO  root:18 - new balance = 245.0
-2018-03-05 15:43:33 INFO  root:18 - yuri has just logged in
-2018-03-05 15:43:33 INFO  root:18 - 7267a567-c has created an account
-2018-03-05 15:43:33 INFO  root:18 - bf333615-5 has applied for an account
-2018-03-05 15:43:33 INFO  root:18 - balance = 200.0
-2018-03-05 15:43:33 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:43:33 INFO  root:18 - new balance = 250.0
-2018-03-05 15:43:33 INFO  root:18 - balance = 250.0
-2018-03-05 15:43:33 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:43:33 INFO  root:18 - new balance = 245.0
-2018-03-05 15:45:46 INFO  root:18 - yuri has just logged in
-2018-03-05 15:45:46 INFO  root:18 - e0a3cea1-c has created an account
-2018-03-05 15:45:46 INFO  root:18 - 13297dbd-2 has applied for an account
-2018-03-05 15:45:46 INFO  root:18 - balance = 200.0
-2018-03-05 15:45:46 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:45:46 INFO  root:18 - new balance = 250.0
-2018-03-05 15:45:46 INFO  root:18 - balance = 250.0
-2018-03-05 15:45:46 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:45:46 INFO  root:18 - new balance = 245.0
-2018-03-05 15:46:06 INFO  root:18 - yuri has just logged in
-2018-03-05 15:46:06 INFO  root:18 - b1aedc59-2 has created an account
-2018-03-05 15:46:06 INFO  root:18 - 9ba0f823-5 has applied for an account
-2018-03-05 15:46:06 INFO  root:18 - balance = 200.0
-2018-03-05 15:46:06 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:46:06 INFO  root:18 - new balance = 250.0
-2018-03-05 15:46:06 INFO  root:18 - balance = 250.0
-2018-03-05 15:46:06 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:46:06 INFO  root:18 - new balance = 245.0
-2018-03-05 15:46:12 INFO  root:18 - yuri has just logged in
-2018-03-05 15:46:12 INFO  root:18 - 22649808-c has created an account
-2018-03-05 15:46:12 INFO  root:18 - 2b94a8a9-7 has applied for an account
-2018-03-05 15:46:12 INFO  root:18 - balance = 200.0
-2018-03-05 15:46:12 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:46:12 INFO  root:18 - new balance = 250.0
-2018-03-05 15:46:12 INFO  root:18 - balance = 250.0
-2018-03-05 15:46:12 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:46:12 INFO  root:18 - new balance = 245.0
-2018-03-05 15:47:44 INFO  root:18 - yuri has just logged in
-2018-03-05 15:47:44 INFO  root:18 - 376e0fac-e has created an account
-2018-03-05 15:47:44 INFO  root:18 - 22364e43-7 has applied for an account
-2018-03-05 15:47:44 INFO  root:18 - balance = 200.0
-2018-03-05 15:47:44 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:47:44 INFO  root:18 - new balance = 250.0
-2018-03-05 15:47:44 INFO  root:18 - balance = 250.0
-2018-03-05 15:47:44 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:47:44 INFO  root:18 - new balance = 245.0
-2018-03-05 15:51:43 INFO  root:18 - yuri has just logged in
-2018-03-05 15:51:43 INFO  root:18 - 3406e5bb-d has created an account
-2018-03-05 15:51:43 INFO  root:18 - c5c671bf-c has applied for an account
-2018-03-05 15:51:43 INFO  root:18 - balance = 200.0
-2018-03-05 15:51:43 INFO  root:18 - deposit amount = 50.0
-2018-03-05 15:51:43 INFO  root:18 - new balance = 250.0
-2018-03-05 15:51:43 INFO  root:18 - balance = 250.0
-2018-03-05 15:51:43 INFO  root:18 - Withdraw amount = 5.0
-2018-03-05 15:51:43 INFO  root:18 - new balance = 245.0
+2018-03-11 15:23:24 DEBUG root:26 - customerid: 5
+2018-03-11 15:23:56 DEBUG root:26 - customerid: 5
+2018-03-11 15:24:52 INFO  root:18 - balance = 0.0
+2018-03-11 15:24:52 INFO  root:18 - deposit amount = 500.0
+2018-03-11 15:24:52 DEBUG root:26 - account id: 52 balance: 500.0
+2018-03-11 15:24:52 INFO  root:18 - new balance = 500.0
+2018-03-11 15:24:52 DEBUG root:26 - account id: 52 balance: 500.0
+2018-03-11 15:24:59 INFO  root:18 - balance = 500.0
+2018-03-11 15:24:59 INFO  root:18 - Withdraw amount = 250.0
+2018-03-11 15:24:59 DEBUG root:26 - account id: 52 balance: 250.0
+2018-03-11 15:24:59 INFO  root:18 - new balance = 250.0
+2018-03-11 15:25:05 INFO  root:18 - balance = 0.0
+2018-03-11 15:25:05 INFO  root:18 - deposit amount = 700.0
+2018-03-11 15:25:05 DEBUG root:26 - account id: 53 balance: 700.0
+2018-03-11 15:25:05 INFO  root:18 - new balance = 700.0
+2018-03-11 15:25:05 DEBUG root:26 - account id: 53 balance: 700.0
+2018-03-11 15:25:14 DEBUG root:26 - customerid: 5
+2018-03-11 19:52:25 DEBUG root:26 - account id: 52 balance: 750.0
+2018-03-11 19:52:25 INFO  root:18 - Account 52 balance is now: 750.0
+2018-03-11 19:52:35 DEBUG root:26 - account id: 53 balance: 700.0
+2018-03-11 19:52:35 INFO  root:18 - com.revature.pojo.Account@2f7a2457 has been frozen
+2018-03-11 19:53:04 DEBUG root:26 - customerid: 5
+2018-03-11 19:53:15 INFO  root:18 - balance = 700.0
+2018-03-11 19:53:15 INFO  root:18 - Withdraw amount = 50.0
+2018-03-11 19:53:15 DEBUG root:26 - account id: 53 balance: 650.0
+2018-03-11 19:53:15 INFO  root:18 - new balance = 650.0
+2018-03-11 19:55:13 DEBUG root:26 - customerid: 5
+2018-03-11 19:55:37 INFO  root:18 - balance = 750.0
+2018-03-11 19:55:37 INFO  root:18 - Withdraw amount = 500.0
+2018-03-11 19:55:37 DEBUG root:26 - account id: 52 balance: 250.0
+2018-03-11 19:55:37 INFO  root:18 - new balance = 250.0
+2018-03-11 19:56:04 DEBUG root:26 - customerid: 5
+2018-03-11 20:01:29 DEBUG root:26 - customerid: 5
+2018-03-11 20:21:48 DEBUG root:26 - getting all customers
+2018-03-11 20:23:45 DEBUG root:26 - getting all customers
+2018-03-11 20:23:45 DEBUG root:26 - yuri
+2018-03-11 20:25:25 DEBUG root:26 - getting all customers
+2018-03-11 20:25:25 DEBUG root:26 - yuri
+2018-03-11 20:25:25 DEBUG root:26 - mee
+2018-03-11 20:26:23 INFO  root:18 - yuri2 has created an account
+2018-03-11 20:26:27 DEBUG root:26 - customerid: 5
+2018-03-11 20:26:34 DEBUG root:26 - customerid: 6
+2018-03-11 20:26:34 INFO  root:18 - yuri has added yuri2 to their account
+2018-03-11 20:26:47 DEBUG root:26 - customerid: 6
+2018-03-11 20:37:51 DEBUG root:26 - customerid: 5
+2018-03-11 20:38:21 INFO  root:18 - yuri2 has created an account
+2018-03-11 20:38:25 DEBUG root:26 - customerid: 5
+2018-03-11 20:38:33 DEBUG root:26 - customerid: 7
+2018-03-11 20:38:33 INFO  root:18 - 52 has added yuri2 as an owner of the account
+2018-03-11 20:38:43 DEBUG root:26 - customerid: 7
+2018-03-11 20:38:51 INFO  root:18 - balance = 250.0
+2018-03-11 20:38:51 INFO  root:18 - deposit amount = 500.0
+2018-03-11 20:38:51 DEBUG root:26 - account id: 52 balance: 750.0
+2018-03-11 20:38:51 INFO  root:18 - new balance = 750.0
+2018-03-11 20:38:51 DEBUG root:26 - account id: 52 balance: 750.0
+2018-03-11 20:38:57 DEBUG root:26 - customerid: 5
+2018-03-11 20:40:31 DEBUG root:26 - customerid: 5
+2018-03-11 20:40:55 DEBUG root:26 - customerid: 5
+2018-03-11 20:41:00 DEBUG root:26 - customerid: 7
+2018-03-11 20:41:12 DEBUG root:26 - customerid: 7
+2018-03-11 20:41:12 INFO  root:18 - 52 has added yuri2 as an owner of the account
+2018-03-11 20:41:41 DEBUG root:26 - customerid: 5
+2018-03-12 11:24:32 DEBUG root:26 - customerid: 5
+2018-03-12 11:24:40 INFO  root:18 - yuri has applied for an account
+2018-03-12 12:26:11 DEBUG root:100 - customerid: 5
