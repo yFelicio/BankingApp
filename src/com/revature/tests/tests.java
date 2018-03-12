@@ -2,19 +2,18 @@ package com.revature.tests;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
-import java.util.UUID;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.revature.Exceptions.UserAlreadyExistsException;
 import com.revature.Util.CustomerUtility;
 import com.revature.Util.EmployeeUtility;
-import com.revature.Util.SerializeUtility;
+import com.revature.dao.ApplicationDAO;
+import com.revature.dao.ApplicationDAOImpl;
+import com.revature.dao.CustomerDAO;
+import com.revature.dao.CustomerDAOImpl;
 import com.revature.pojo.Account;
 import com.revature.pojo.Admin;
 import com.revature.pojo.Application;
@@ -24,21 +23,19 @@ import com.revature.pojo.Employee;
 public class tests {
 	static Customer customer = new Customer("yuri", "pass");
 	static Account account = new Account();
+	
 	/*
 	 * Running tests will RESET all saved data!
 	 * This method will reset all files and initialize a customer with an account
 	 */
 	@BeforeClass
 	public static void doYourOneBuild() {
-		new File("accounts.dat").delete();
-	    new File("applications.dat").delete();
-	    new File("customers.dat").delete();
-	    new File("employees.dat").delete();
-	       
-		customer.setAccountID(account.getAccountID());
-		account.deposit(500);
-		SerializeUtility.addCustomer(customer);
-		SerializeUtility.addAccount(account);
+		CustomerDAO customerDAO = new CustomerDAOImpl();
+		customerDAO.signUp("test1", "pass");
+		Customer customer = customerDAO.getCustomer("test1", "pass");
+		ApplicationDAO appDAO = new ApplicationDAOImpl();
+		appDAO.createApplication(customer.getCustomerID());
+		
 	}
 
 	@Rule

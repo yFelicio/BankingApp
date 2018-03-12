@@ -21,6 +21,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		String sql = "SELECT * FROM USERS WHERE TYPE_ID_FK != 1 AND USERNAME = ? AND PASSWORD = ?";
 		
 		try {
+			conn.setAutoCommit(true);
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, username);
 			stmt.setString(2, password);

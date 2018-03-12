@@ -250,7 +250,8 @@ public class UIUtility {
 			}
 			System.out.println("1. Make a Deposit");
 			System.out.println("2. Make a Withdraw");
-			System.out.println("3. Go Back");
+			System.out.println("3. Make a Transfer");
+			System.out.println("4. Go Back");
 			System.out.print("Select a menu item (enter number): ");
 			String choice = scan.nextLine();
 			if (choice.equals("1")) {
@@ -258,6 +259,8 @@ public class UIUtility {
 			} else if (choice.equals("2")) {
 				makeWithdrawal(customer);
 			} else if (choice.equals("3")) {
+				makeTransfer(customer);
+			} else if (choice.equals("4")) {
 				customerMenu(customer);
 			}
 		} else {
@@ -267,6 +270,48 @@ public class UIUtility {
 			customerMenu(customer);
 		}
 		
+	}
+	public void makeTransfer(Customer customer) {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("Which account would you like to transfer from (enter the id)? ");
+		String line = scan.nextLine();
+		List<Account> accounts = customer.getAccounts(); 
+		Account account_from = null;
+		for (Account acc : accounts) {
+			if (acc.getAccountID() == Integer.parseInt(line)) {
+				account_from = acc;
+			}
+		}
+		if (!account_from.isActive()) {
+			System.out.println("This account is Frozen.");
+			accountMenu(customer);
+		}
+		System.out.print("Which account would you like to transfer to (enter the id)? ");
+		line = scan.nextLine();
+		Account account_to = null;
+		for (Account acc : accounts) {
+			if (acc.getAccountID() == Integer.parseInt(line)) {
+				account_to = acc;
+			}
+		}
+		if (!account_to.isActive()) {
+			System.out.println("This account is Frozen.");
+			accountMenu(customer);
+		}
+		if (account_from != null) {
+			System.out.print("How much would you like to transfer? ");
+			line = scan.nextLine();
+			double amount = Double.parseDouble(line);
+			// make transfer 
+			System.out.println(CustomerUtility.makeTransfer(account_from, account_to, amount));
+			account_from.withdraw(amount);
+			account_to.deposit(amount);
+			accountMenu(customer);	
+		} else {
+			System.out.println("You do not have an account that matches that ID");
+			accountMenu(customer);
+		}
+
 	}
 	
 	public void makeDeposit(Customer customer) {

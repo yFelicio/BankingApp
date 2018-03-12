@@ -11,6 +11,6 @@ public interface AccountDAO {
 	public void updateAccount(Account account);
 	public Account getAccount(int account_id);
 	public void addUserToAccount(int customer_id, int account_id);
-	
+	public void transfer(int account_from, int account_to, double amount);
 	
 }

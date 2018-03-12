@@ -63,3 +63,16 @@
 2018-03-12 11:24:32 DEBUG root:26 - customerid: 5
 2018-03-12 11:24:40 INFO  root:18 - yuri has applied for an account
 2018-03-12 12:26:11 DEBUG root:100 - customerid: 5
+2018-03-12 13:13:03 INFO  root:56 - Application id: 41 has been approved
+2018-03-12 13:13:13 DEBUG root:96 - customerid: 5
+2018-03-12 13:14:27 DEBUG root:96 - customerid: 5
+2018-03-12 13:14:45 DEBUG root:96 - customerid: 5
+2018-03-12 13:16:55 DEBUG root:96 - customerid: 5
+2018-03-12 14:00:13 INFO  root:56 - yuri2 has applied for an account
+2018-03-12 14:00:15 INFO  root:56 - yuri2 has applied for an account
+2018-03-12 14:00:55 INFO  root:56 - Application id: 43 has been approved
+2018-03-12 14:01:01 INFO  root:56 - Application id: 42 has been approved
+2018-03-12 14:02:51 DEBUG root:96 - customerid: 5
+2018-03-12 14:02:52 INFO  root:56 - 63 has added yuri as an owner of the account
+2018-03-12 14:04:00 DEBUG root:96 - account id: 52 balance: 0.0
+2018-03-12 14:04:00 INFO  root:56 - Account 52 balance is now: 0.0

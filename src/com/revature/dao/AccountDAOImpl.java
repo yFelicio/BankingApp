@@ -1,5 +1,6 @@
 package com.revature.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -130,6 +131,24 @@ public class AccountDAOImpl implements AccountDAO {
 			stmt.setInt(1, customer_id);
 			stmt.setInt(2, account_id);
 			stmt.executeUpdate();
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void transfer(int account_from, int account_to, double amount) {
+		Connection conn = ConnectionFactory.getInstance().getConnection();
+		
+		try {
+			CallableStatement cStmt = conn.prepareCall("{call TRANSFER_PROC(?, ?, ?)}");
+			cStmt.setInt(1, account_from);
+			cStmt.setInt(2, account_to);
+			cStmt.setDouble(3, amount);
+			cStmt.executeUpdate();
 			
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block

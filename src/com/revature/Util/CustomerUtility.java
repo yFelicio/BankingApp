@@ -18,7 +18,6 @@ import com.revature.pojo.Customer;
 public class CustomerUtility {
 
 	
-	
 	public static Customer attemptLogIn(String username, String password) {
 
 		CustomerDAO customerDAO = new CustomerDAOImpl();
@@ -106,6 +105,11 @@ public class CustomerUtility {
 		return ("Your new balance is: "+ account.getBalance());
 	}
 	
+	public static String makeTransfer(Account account_from, Account account_to, double amount) {
+		AccountDAO accountDAO = new AccountDAOImpl();
+		accountDAO.transfer(account_from.getAccountID(), account_to.getAccountID(), amount);
+		return "Transfer Successful";
+	}
 	
 
 	public static String addUserToAccount(int account_id, String username) {

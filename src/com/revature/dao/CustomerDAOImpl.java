@@ -22,6 +22,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		String sql = "INSERT INTO USERS (USERNAME, PASSWORD, TYPE_ID_FK) VALUES(?,?,1)";	
 		try {
+			conn.setAutoCommit(true);
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, username);
 			stmt.setString(2, password);
@@ -39,6 +40,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		String sql = "SELECT * FROM USERS WHERE TYPE_ID_FK = 1 AND USERNAME = ? AND PASSWORD = ?";
 		
 		try {
+			conn.setAutoCommit(true);
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, username);
 			stmt.setString(2, password);
@@ -48,7 +50,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 				customer.setCustomerID(rs.getInt("USER_ID"));
 				customer.setUsername(rs.getString("USERNAME"));
 				customer.setPassword(rs.getString("PASSWORD"));
-				LoggingUtil.logDebug("customerid: "+customer.getCustomerID());
 				
 				// get accounts & applications associated with this customer
 				if (getAccounts(customer.getCustomerID()) != null) {
